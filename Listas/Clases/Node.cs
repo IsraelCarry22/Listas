@@ -7,14 +7,14 @@
 
         public Node()
         {
-            this.Next = null;
-            this.Data = 0;
+            Next = null;
+            Data = 0;
         }
 
         public Node(int d)
         {
-            this.Data = d;
-            this.Next = null;
+            Data = d;
+            Next = null;
         }
     }
 }
