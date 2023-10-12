@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Listas.Interfaces;
+using System;
 
 namespace All_List.Clases.Listas
 {
-    public class DoublyListLinked
+    public class DoublyListLinked : ImethodLists
     {
         private DoubleNode Head { get; set; }
         private DoubleNode LastNode { get; set; }

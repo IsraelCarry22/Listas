@@ -49,6 +49,7 @@
     <Compile Include="Clases\Listas\DoublyListLinked.cs" />
     <Compile Include="Clases\Listas\SimpleList.cs" />
     <Compile Include="Clases\Node.cs" />
+    <Compile Include="Interfaces\ImethodLists.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

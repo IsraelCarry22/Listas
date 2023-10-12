@@ -1,22 +1,21 @@
 ﻿namespace All_List.Clases
 {
-    public class DoubleNode
-    {
+    public class DoubleNode : Node
+    { 
         public DoubleNode Back { get; set; }
-        public DoubleNode Next { get; set; }
-        public int Data { get; set; }
 
-        public DoubleNode()
+        public DoubleNode() : base()
         {
-            Back = null;
-            Next = null;
+            this.Back = null;
+            this.Data = 0;
+            this.Next = null;
         }
 
-        public DoubleNode(int d)
+        public DoubleNode(int data) : base()
         {
-            Data = d;
-            Back = null;
-            Next = null;
+            this.Data = data;
+            this.Next = null;
+            this.Back = null;
         }
     }
 }

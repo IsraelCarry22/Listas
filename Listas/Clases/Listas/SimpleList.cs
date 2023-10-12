@@ -1,8 +1,9 @@
+using Listas.Interfaces;
 using System;
 
 namespace All_List.Clases.Listas
 {
-    public class SimpleList
+    public class SimpleList : ImethodLists
     {
         private Node Head { get; set; }
 
