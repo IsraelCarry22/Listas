@@ -8,14 +8,14 @@
 
         public int Data { get; set; }
 
-        public DoubleNode() : base()
+        public DoubleNode()
         {
             Back = null;
             Data = 0;
             Next = null;
         }
 
-        public DoubleNode(int data) : base()
+        public DoubleNode(int data)
         {
             Data = data;
             Next = null;
