@@ -38,6 +38,10 @@ namespace All_List.Clases.Listas
 
         public void Delete(int data)
         {
+            if (IsEmpty())
+            {
+                return;
+            }
             DoubleNode CurrentNode = Head;
             if (Head.Data == data) //Primer elmento
             {
@@ -71,6 +75,11 @@ namespace All_List.Clases.Listas
 
         public void Search(int data)
         {
+            if (IsEmpty())
+            {
+                Console.WriteLine("Lista vacia");
+                return;
+            }
             DoubleNode CopyHead = Head;
             do
             {
@@ -86,6 +95,11 @@ namespace All_List.Clases.Listas
 
         public void Show()
         {
+            if (IsEmpty())
+            {
+                Console.WriteLine("Lista vacia");
+                return;
+            }
             DoubleNode CopyHead = Head;
             int i = 1;
             Console.WriteLine("=== Mi Lista doblemente enlazada ===");
@@ -95,24 +109,6 @@ namespace All_List.Clases.Listas
                 CopyHead = CopyHead.Next;
                 i++;
             } while (CopyHead != Head);
-        }
-
-        public bool Exist(int data)
-        {
-            if (IsEmpty())
-            {
-                return false;
-            }
-            DoubleNode CurrentNode = Head;
-            while (CurrentNode.Next != null)
-            {
-                if (CurrentNode.Data == data)
-                {
-                    return true;
-                }
-                CurrentNode = CurrentNode.Next;
-            }
-            return false;
         }
 
         public bool IsEmpty()

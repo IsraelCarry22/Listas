@@ -1,6 +1,6 @@
 ﻿namespace All_List.Clases
 {
-    public class DoubleNode : Node
+    public class DoubleNode
     { 
         public DoubleNode Back { get; set; }
 

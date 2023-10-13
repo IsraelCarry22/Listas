@@ -105,24 +105,6 @@ namespace All_List.Clases.Listas
             } while (CurrentNode != Head);
         }
 
-        public bool Exist(int data)
-        {
-            if (IsEmpty())
-            {
-                return false;
-            }
-            Node CurrentNode = Head;
-            while (CurrentNode.Next != null)
-            {
-                if (CurrentNode.Data == data)
-                {
-                    return true;
-                }
-                CurrentNode = CurrentNode.Next;
-            }
-            return false;
-        }
-
         public bool IsEmpty()
         {
             return Head == null;

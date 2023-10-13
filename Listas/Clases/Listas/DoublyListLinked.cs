@@ -1,5 +1,6 @@
 ﻿using Listas.Interfaces;
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace All_List.Clases.Listas
 {
@@ -26,10 +27,6 @@ namespace All_List.Clases.Listas
                 Head.Back = null;
                 LastNode = Head;
             }
-            if (Exist(NewNode.Data))
-            {
-                return;
-            }
             else
             {
                 LastNode.Next = NewNode;
@@ -41,6 +38,10 @@ namespace All_List.Clases.Listas
 
         public void Delete(int data)
         {
+            if (IsEmpty())
+            {
+                return;
+            }
             DoubleNode CurrentNode = Head;
             if (Head.Data == data) //Primer elemento
             {
@@ -73,6 +74,15 @@ namespace All_List.Clases.Listas
 
         public void Search(int data)
         {
+            if (IsEmpty())
+            {
+                Console.WriteLine("Lista vacia");
+                return;
+            }
+            if (IsEmpty())
+            {
+                return;
+            }
             DoubleNode CurrentNode = Head;
             while (CurrentNode != null)
             {
@@ -88,6 +98,11 @@ namespace All_List.Clases.Listas
 
         public void Show()
         {
+            if (IsEmpty())
+            {
+                Console.WriteLine("Lista vacia");
+                return;
+            }
             DoubleNode CurrentNode = Head;
             int i = 1;
             Console.WriteLine("=== Mi Lista doblemente enlazada ===");
@@ -97,24 +112,6 @@ namespace All_List.Clases.Listas
                 CurrentNode = CurrentNode.Next;
                 i++;
             }
-        }
-
-        public bool Exist(int data)
-        {
-            if (IsEmpty())
-            {
-                return false;
-            }
-            DoubleNode CurrentNode = Head;
-            while (CurrentNode.Next != null)
-            {
-                if (CurrentNode.Data == data)
-                {
-                    return true;
-                }
-                CurrentNode = CurrentNode.Next;
-            }
-            return false;
         }
 
         public bool IsEmpty()
