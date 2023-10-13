@@ -79,10 +79,6 @@ namespace All_List.Clases.Listas
                 Console.WriteLine("Lista vacia");
                 return;
             }
-            if (IsEmpty())
-            {
-                return;
-            }
             DoubleNode CurrentNode = Head;
             while (CurrentNode != null)
             {
