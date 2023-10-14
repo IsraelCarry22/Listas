@@ -7,6 +7,7 @@ namespace Listas
     {
         static void Main(string[] args)
         {
+            Random RL = new Random();
             bool Exit = false;
             do
             {
@@ -19,11 +20,11 @@ namespace Listas
                     case 1:
                         Console.Clear();
                         SimpleList SList = new SimpleList();
+                        SList.Add(23);
                         SList.Add(1);
-                        SList.Add(10);
-                        SList.Add(100);
-                        SList.Add(1000);
-                        SList.Add(10000);
+                        SList.Add(789);
+                        SList.Add(456);
+                        SList.Add(3);
                         SList.Show();
                         SList.Delete(1);
                         SList.Delete(100);
@@ -32,16 +33,24 @@ namespace Listas
                         SList.Search(1);
                         SList.Search(100);
                         SList.Search(10000);
+                        Console.WriteLine("\n== Random list ==");
+                        SimpleList RList = new SimpleList();
+                        RList.Add(RL.Next(1, 5));
+                        RList.Add(RL.Next(1, 5));
+                        RList.Add(RL.Next(1, 5));
+                        RList.Add(RL.Next(1, 5));
+                        RList.Add(RL.Next(1, 5));
+                        RList.Show();
                         Console.ReadKey();
                         break;
                     case 2:
                         Console.Clear();
                         CircularList CList = new CircularList();
+                        CList.Add(23);
                         CList.Add(1);
-                        CList.Add(10);
-                        CList.Add(100);
-                        CList.Add(1000);
-                        CList.Add(10000);
+                        CList.Add(789);
+                        CList.Add(456);
+                        CList.Add(3);
                         CList.Show();
                         CList.Delete(1);
                         CList.Delete(100);
@@ -50,16 +59,24 @@ namespace Listas
                         CList.Search(1);
                         CList.Search(100);
                         CList.Search(10000);
+                        Console.WriteLine("\n== Random list ==");
+                        CircularList RCList = new CircularList();
+                        RCList.Add(RL.Next(1, 5));
+                        RCList.Add(RL.Next(1, 5));
+                        RCList.Add(RL.Next(1, 5));
+                        RCList.Add(RL.Next(1, 5));
+                        RCList.Add(RL.Next(1, 5));
+                        RCList.Show();
                         Console.ReadKey();
                         break;
                     case 3:
                         Console.Clear();
                         DoublyListLinked LList = new DoublyListLinked();
+                        LList.Add(23);
                         LList.Add(1);
-                        LList.Add(10);
-                        LList.Add(100);
-                        LList.Add(1000);
-                        LList.Add(10000);
+                        LList.Add(789);
+                        LList.Add(456);
+                        LList.Add(3);
                         LList.Show();
                         LList.Delete(1);
                         LList.Delete(100);
@@ -68,16 +85,24 @@ namespace Listas
                         LList.Search(1);
                         LList.Search(100);
                         LList.Search(10000);
+                        Console.WriteLine("\n== Random list ==");
+                        DoublyListLinked RLList = new DoublyListLinked();
+                        RLList.Add(RL.Next(1, 5));
+                        RLList.Add(RL.Next(1, 5));
+                        RLList.Add(RL.Next(1, 5));
+                        RLList.Add(RL.Next(1, 5));
+                        RLList.Add(RL.Next(1, 5));
+                        RLList.Show();
                         Console.ReadKey();
                         break;
                     case 4:
                         Console.Clear();
                         CircularDoublyLinkedList CDList = new CircularDoublyLinkedList();
+                        CDList.Add(23);
                         CDList.Add(1);
-                        CDList.Add(10);
-                        CDList.Add(100);
-                        CDList.Add(1000);
-                        CDList.Add(10000);
+                        CDList.Add(789);
+                        CDList.Add(456);
+                        CDList.Add(3);
                         CDList.Show();
                         CDList.Delete(1);
                         CDList.Delete(100);
@@ -86,6 +111,14 @@ namespace Listas
                         CDList.Search(1);
                         CDList.Search(100);
                         CDList.Search(10000);
+                        Console.WriteLine("\n== Random list ==");
+                        CircularDoublyLinkedList RCDList = new CircularDoublyLinkedList();
+                        RCDList.Add(RL.Next(1, 5));
+                        RCDList.Add(RL.Next(1, 5));
+                        RCDList.Add(RL.Next(1, 5));
+                        RCDList.Add(RL.Next(1, 5));
+                        RCDList.Add(RL.Next(1, 5));
+                        RCDList.Show();
                         Console.ReadKey();
                         break;
                     case 5:
@@ -101,7 +134,6 @@ namespace Listas
                         break;
                 }
             } while (!Exit);
-            Console.ReadKey();
         }
 
         private static int IngresaValor()

@@ -18,22 +18,34 @@ namespace All_List.Clases.Listas
             {
                 Data = data
             };
-            if (IsEmpty())
+            if (IsEmpty()) //insertar al inicio/comprobar si al lista esta vacia
             {
                 Head = NewNode;
                 return;
             }
-            if (Exist(NewNode.Data))
+            if (Exist(NewNode.Data)) //comprobar si ya existe un dato igual al que vamos a ingresar
             {
+                return;
+            }
+            if (NewNode.Data < Head.Data) //ordena el dato si es menor al dato del primer elemento
+            {
+                NewNode.Next = Head;
+                Head = NewNode;
                 return;
             }
             else
             {
                 Node CurrentNode = Head;
-                while (CurrentNode.Next != null)
+                while (CurrentNode.Next != null) //se recorre la lista asta llegar al final
                 {
+                    if (NewNode.Data < CurrentNode.Next.Data)
+                    {
+                        break;
+                    }
                     CurrentNode = CurrentNode.Next;
                 }
+                //llegado a este punto se inserta en X posicion/final de la lista
+                NewNode.Next = CurrentNode.Next;
                 CurrentNode.Next = NewNode;
             }
         }
@@ -108,14 +120,22 @@ namespace All_List.Clases.Listas
             {
                 return false;
             }
+            if (Head != null && Head.Data == data)
+            {
+                return true;
+            }
             Node CurrentNode = Head;
             while (CurrentNode.Next != null)
             {
-                if (CurrentNode.Data == data)
+                if (CurrentNode.Next.Data >= data)
                 {
-                    return true;
+                    break;
                 }
                 CurrentNode = CurrentNode.Next;
+            }
+            if (CurrentNode.Next != null && CurrentNode.Next.Data == data)
+            {
+                return true;
             }
             return false;
         }

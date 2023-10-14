@@ -1,5 +1,6 @@
 ﻿using Listas.Interfaces;
 using System;
+using System.ComponentModel.Design;
 using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace All_List.Clases.Listas
@@ -20,18 +21,45 @@ namespace All_List.Clases.Listas
             {
                 Data = data
             };
-            if (IsEmpty())
+            if (IsEmpty()) //insertar al inicio/comprobar si al lista esta vacia
             {
+                NewNode.Next = null;
+                NewNode.Back = null;
                 Head = NewNode;
-                Head.Next = null;
-                Head.Back = null;
-                LastNode = Head;
+                LastNode = NewNode;
+                return;
+            }
+            if (Exist(NewNode.Data)) //comprobar si ya existe un dato igual al que vamos a ingresar
+            {
+                return;
+            }
+            if (NewNode.Data < Head.Data) //ordena el dato si es menor al dato del primer elemento
+            {
+                Head.Back = NewNode;
+                NewNode.Next = Head;
+                Head = LastNode;
+                Head = NewNode;
+                return;
             }
             else
             {
-                LastNode.Next = NewNode;
-                NewNode.Next = null;
-                NewNode.Back = LastNode;
+                DoubleNode CurrentNode = Head;
+                while (CurrentNode.Next != null) //recorremos la lista
+                {
+                    if (NewNode.Data < CurrentNode.Next.Data) //insertamos en X posicion
+                    {
+                        NewNode.Next = CurrentNode.Next;
+                        NewNode.Back = CurrentNode;
+                        CurrentNode.Next = NewNode;
+                        NewNode.Next.Back = NewNode;
+                        return;
+                    }
+                    CurrentNode = CurrentNode.Next;
+                }
+                //insertamos al final
+                NewNode.Next = CurrentNode.Next;
+                CurrentNode.Next = NewNode;
+                NewNode.Back = CurrentNode;
                 LastNode = NewNode;
             }
         }
@@ -108,6 +136,32 @@ namespace All_List.Clases.Listas
                 CurrentNode = CurrentNode.Next;
                 i++;
             }
+        }
+
+        public bool Exist(int data)
+        {
+            if (IsEmpty())
+            {
+                return false;
+            }
+            if (Head != null && Head.Data == data)
+            {
+                return true;
+            }
+            DoubleNode CurrentNode = Head;
+            while (CurrentNode.Next != null)
+            {
+                if (CurrentNode.Next.Data >= data)
+                {
+                    break;
+                }
+                CurrentNode = CurrentNode.Next;
+            }
+            if (CurrentNode.Next != null && CurrentNode.Next.Data == data)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool IsEmpty()

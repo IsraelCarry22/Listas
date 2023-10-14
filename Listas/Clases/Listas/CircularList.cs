@@ -19,16 +19,41 @@ namespace All_List.Clases.Listas
             {
                 Data = data
             };
-            if (IsEmpty())
+            if (IsEmpty()) //insertar al inicio/comprobar si al lista esta vacia
             {
                 Head = NewNode;
                 Head.Next = Head;
+                LastNode = NewNode;
+                return;
+            }
+            if (Exist(NewNode.Data)) //comprobar si ya existe un dato igual al que vamos a ingresar
+            {
+                return;
+            }
+            if (NewNode.Data < Head.Data) //ordena el dato si es menor al dato del primer elemento
+            {
+                NewNode.Next = Head;
                 LastNode = Head;
+                Head = NewNode;
+                Head.Next.Next = Head;
+                return;
             }
             else
             {
-                LastNode.Next = NewNode;
-                NewNode.Next = Head;
+                Node CurrentNode = Head;
+                do //recorremos la lista
+                {
+                    if (NewNode.Data < CurrentNode.Next.Data) //Insertamos en X posicion
+                    {
+                        NewNode.Next = CurrentNode.Next;
+                        CurrentNode.Next = NewNode;
+                        return;
+                    }
+                    CurrentNode = CurrentNode.Next;
+                } while (CurrentNode.Next != Head);
+                //insertamos al final de la lista
+                NewNode.Next = CurrentNode.Next;
+                CurrentNode.Next = NewNode;
                 LastNode = NewNode;
             }
         }
@@ -103,6 +128,32 @@ namespace All_List.Clases.Listas
                 CurrentNode = CurrentNode.Next;
                 i++;
             } while (CurrentNode != Head);
+        }
+
+        public bool Exist(int data)
+        {
+            if (IsEmpty())
+            {
+                return false;
+            }
+            if (Head != null && Head.Data == data)
+            {
+                return true;
+            }
+            Node CurrentNode = Head;
+            while (CurrentNode.Next != Head)
+            {
+                if (CurrentNode.Next.Data >= data)
+                {
+                    break;
+                }
+                CurrentNode = CurrentNode.Next;
+            }
+            if (CurrentNode.Next != null && CurrentNode.Next.Data == data)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool IsEmpty()
