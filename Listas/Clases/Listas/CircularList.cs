@@ -111,17 +111,22 @@ namespace All_List.Clases.Listas
             {
                 return;
             }
-            //Caso 2: Recorremos la lista
-            Node CurrentNode = Head;
-            while(CurrentNode.Next != Head && CurrentNode.Next.Data <= data)
-            {
-                CurrentNode = CurrentNode.Next;
-            }
-            //Caso 3: Si existe el dato en la lista
-            if (CurrentNode.Data == data)
+            //Case 2: Comprobamos si el dato esta al inicio de la lista
+            if (Head.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] Existe en la lista");
                 return;
+            }
+            //Caso 3: Recorremos la lista
+            Node CurrentNode = Head;
+            while(CurrentNode.Next != Head)
+            {
+                if (CurrentNode.Data == data)
+                {
+                    Console.WriteLine($"- Dato[{data}] Existe en la lista");
+                    return;
+                }
+                CurrentNode = CurrentNode.Next;
             }
             //Caso 4: No existe el dato en la lista
             Console.WriteLine($"- Dato[{data}] No Existe en la lista ");

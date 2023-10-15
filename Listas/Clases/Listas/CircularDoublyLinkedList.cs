@@ -82,26 +82,27 @@ namespace All_List.Clases.Listas
                 LastNode.Next = Head;
                 return;
             }
-            //Caso 3: Empezamos a recorrer la lista
-            DoubleNode CurrentNode = Head;
-            while (CurrentNode.Next != Head && CurrentNode.Next.Data <= data)
-            {
-                //Caso 4: El dato a eliminar esta en X posicion de la lista
-                if (CurrentNode.Next.Data == data)
-                {
-                    Console.WriteLine($"- Dato[{data}] se elimino de la lista");
-                    CurrentNode.Next.Next.Back = CurrentNode;
-                    CurrentNode.Next = CurrentNode.Next.Next;
-                    return;
-                }
-                CurrentNode = CurrentNode.Next;
-            }
-            //Caso 5: El dato a eliminar esta al ultimo de la lista
-            if (CurrentNode.Next == LastNode)
+            //Caso 3: El dato a eliminar esta al final de la lista
+            if (LastNode.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 LastNode = LastNode.Back;
                 LastNode.Next = Head;
+                Head.Back = LastNode;
+                return;
+            }
+            //Caso 4: Empezamos a recorrer la lista
+            DoubleNode CurrentNode = Head;
+            while (CurrentNode.Next != Head && CurrentNode.Next.Data < data)
+            {
+                CurrentNode = CurrentNode.Next;
+            }
+            //Caso 5: El dato a eliminar esta en Xposicion de la lista
+            if (CurrentNode.Next.Data == data)
+            {
+                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
+                CurrentNode.Next.Next.Back = CurrentNode;
+                CurrentNode.Next = CurrentNode.Next.Next;
                 return;
             }
             //Caso 6: No se encontro el dato a eliminar
@@ -115,19 +116,31 @@ namespace All_List.Clases.Listas
             {
                 return;
             }
-            //Caso 2: Recorremos la lista
+            //Caso 2: Comprobamos si es dato esta al inicio
+            if (Head.Data == data)
+            {
+                Console.WriteLine($"- Dato[{data}] Existe en la lista");
+                return;
+            }
+            //Caso 3: Comprobamos si es dato esta al final
+            if (LastNode.Data == data)
+            {
+                Console.WriteLine($"- Dato[{data}] Existe en la lista");
+                return;
+            }
+            //Caso 4: Recorremos la lista
             DoubleNode CurrentNode = Head;
             while (CurrentNode.Next != Head && CurrentNode.Next.Data <= data)
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 3: Si existe el dato en la lista
+            //Caso 5: Si existe el dato en la lista
             if (CurrentNode.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] Existe en la lista");
                 return;
             }
-            //Caso 4: No existe el dato en la lista
+            //Caso 6: No existe el dato en la lista
             Console.WriteLine($"- Dato[{data}] No Existe en la lista ");
         }
 

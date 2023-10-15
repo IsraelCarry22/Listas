@@ -93,17 +93,22 @@ namespace All_List.Clases.Listas
                 Console.WriteLine("Lista vacia...");
                 return;
             }
-            //Caso 2: Empezamos a recorrer la lista
-            Node CurrentNode = Head;
-            while (CurrentNode.Next != null && CurrentNode.Next.Data <= data)
-            {
-                CurrentNode = CurrentNode.Next;
-            }
-            //Caso 3: Comprobamos si es dato del nodo es el mismo al que buscamos
-            if (CurrentNode.Data == data)
+            //Caso 2: Comprobamos si es dato esta al inicio
+            if (Head.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] Existe en la lista");
                 return;
+            }
+            //Caso 3: Empezamos a recorrer la lista
+            Node CurrentNode = Head;
+            while (CurrentNode != null)
+            {
+                if (CurrentNode.Data == data)
+                {
+                    Console.WriteLine($"- Dato[{data}] Existe en la lista");
+                    return;
+                }
+                CurrentNode = CurrentNode.Next;
             }
             //Caso 4: El dato que queremos busacar no existe
             Console.WriteLine($"- Dato[{data}] No Existe en la lista ");
