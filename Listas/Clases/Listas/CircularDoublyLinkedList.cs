@@ -15,10 +15,8 @@ namespace All_List.Clases.Listas
 
         public void Add(int data)
         {
-            DoubleNode NewNode = new DoubleNode
-            {
-                Data = data
-            };
+            //Caso 0: Creamos un nuevo nodo y le asignamos el dato que ingresamos
+            DoubleNode NewNode = new DoubleNode(data);
             //Caso 1: Insertamso al inicio y comprobamos si la lista esta vacia
             if (IsEmpty())
             {

@@ -15,10 +15,7 @@ namespace All_List.Clases.Listas
         public void Add(int data)
         {
             //Caso 0: Creamos un nuevo nodo y le asignamos el dato que ingresamos
-            Node NewNode = new Node
-            {
-                Data = data
-            };
+            Node NewNode = new Node(data);
             //Caso 1: Insertamso al inicio y comprobamos si la lista esta vacia
             if (IsEmpty())
             {
@@ -37,21 +34,15 @@ namespace All_List.Clases.Listas
                 Head = NewNode;
                 return;
             }
-            else
+            //Caso 4: Recorremos la lista
+            Node CurrentNode = Head;
+            while (CurrentNode.Next != null && CurrentNode.Next.Data < NewNode.Data)
             {
-                Node CurrentNode = Head;
-                while (CurrentNode.Next != null)
-                {
-                    if (NewNode.Data < CurrentNode.Next.Data)
-                    {
-                        break;
-                    }
-                    CurrentNode = CurrentNode.Next;
-                }
-                //Caso 4: El valor ordeno se inserta en X posicion o al final de la lista
-                NewNode.Next = CurrentNode.Next;
-                CurrentNode.Next = NewNode;
+                CurrentNode = CurrentNode.Next;
             }
+            //Caso 5: El valor ordeno se inserta en X posicion o al final de la lista
+            NewNode.Next = CurrentNode.Next;
+            CurrentNode.Next = NewNode;
         }
 
         public void Delete(int data)
@@ -101,16 +92,17 @@ namespace All_List.Clases.Listas
             }
             //Caso 3: Empezamos a recorrer la lista
             Node CurrentNode = Head;
-            while (CurrentNode != null)
+            while (CurrentNode != null && CurrentNode.Data < data)
             {
-                if (CurrentNode.Data == data)
-                {
-                    Console.WriteLine($"- Dato[{data}] Existe en la lista");
-                    return;
-                }
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 4: El dato que queremos busacar no existe
+            //Caso 4: Encontramos el dato en X posicion/ final de la lista
+            if (CurrentNode.Data == data)
+            {
+                Console.WriteLine($"- Dato[{data}] Existe en la lista");
+                return;
+            }
+            //Caso 5: El dato que queremos busacar no existe
             Console.WriteLine($"- Dato[{data}] No Existe en la lista ");
         }
 
