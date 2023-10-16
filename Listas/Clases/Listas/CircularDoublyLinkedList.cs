@@ -221,6 +221,7 @@ namespace All_List.Clases.Listas
         public void Clear()
         {
             Head = null;
+            LastNode = null;
         }
     }
 }

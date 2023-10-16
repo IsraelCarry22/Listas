@@ -79,7 +79,7 @@ namespace All_List.Clases.Listas
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 4: El dato a eliminar esta en X posicion de la lista
+            //Caso 4: El dato a eliminar esta en X posicion/Final de la lista
             if (CurrentNode.Next.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
@@ -109,7 +109,7 @@ namespace All_List.Clases.Listas
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 4: El dato ingresado existe en el ultimo elemento
+            //Caso 4: El dato ingresado existe X elemento
             if (CurrentNode.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] Existe en la lista");

@@ -1,7 +1,5 @@
 ﻿using Listas.Interfaces;
 using System;
-using System.ComponentModel.Design;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace All_List.Clases.Listas
 {
@@ -91,7 +89,7 @@ namespace All_List.Clases.Listas
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 5: El dato a eliminar esta al ultimo de la lista
+            //Caso 5: El dato a eliminar esta en X posicion de la lista
             if (CurrentNode.Next.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
@@ -200,7 +198,7 @@ namespace All_List.Clases.Listas
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 4: El dato ingresado existe en el ultimo elemento
+            //Caso 4: El dato ingresado existe en algun elemento
             if (CurrentNode.Data == data)
             {
                 return true;
@@ -217,6 +215,7 @@ namespace All_List.Clases.Listas
         public void Clear()
         {
             Head = null;
+            LastNode = null;
         }
     }
 }
