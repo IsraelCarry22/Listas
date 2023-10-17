@@ -52,27 +52,34 @@ namespace All_List.Clases.Listas
             {
                 return;
             }
-            //Caso 2: el primer elemento tiene el dato a eliminar
+            //Caso 2: El dato a eliminar esta al inicio de la lista
             if (Head.Data == data)
             {
-                Head = Head.Next;
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
+                Head = Head.Next;
                 return;
             }
-            //Caso 3: empezamos a recorrer la lista
+            //Caso 3: Preparamos una variable para recorrer la lista
             Node CurrentNode = Head;
             while (CurrentNode.Next != null && CurrentNode.Next.Data < data)
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 4: se encontro el dato a eliminar
-            if (CurrentNode.Next.Data == data)
+            //Caso 4: El dato a eliminar esta en X posicion de la lista
+            if (CurrentNode.Next != null && CurrentNode.Next.Data == data)
             {
-                CurrentNode.Next = CurrentNode.Next.Next;
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
+                CurrentNode.Next = CurrentNode.Next.Next;
                 return;
             }
-            //Caso 5: no se encontro el dato a eliminar
+            //Caso 5: El dato a eliminar esta al final de la lista
+            if (CurrentNode.Next == null && CurrentNode.Data == data)
+            {
+                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
+                CurrentNode.Next = null;
+                return;
+            }
+            //Caso 6: No se encontro el dato a eliminar
             Console.WriteLine($"- Dato[{data}] no existe en la lista");
         }
 
@@ -81,10 +88,9 @@ namespace All_List.Clases.Listas
             //Caso 1: Comprobamos si la lista esta vacia
             if (IsEmpty())
             {
-                Console.WriteLine("Lista vacia...");
                 return;
             }
-            //Caso 2: Comprobamos si es dato esta al inicio
+            //Case 2: Comprobamos si el dato esta al inicio de la lista
             if (Head.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] Existe en la lista");
@@ -92,17 +98,17 @@ namespace All_List.Clases.Listas
             }
             //Caso 3: Empezamos a recorrer la lista
             Node CurrentNode = Head;
-            while (CurrentNode != null && CurrentNode.Data < data)
+            while (CurrentNode.Next != null && CurrentNode.Next.Data <= data)
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 4: Encontramos el dato en X posicion/ final de la lista
+            //Caso 4: El dato ingresado existe X elemento
             if (CurrentNode.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] Existe en la lista");
                 return;
             }
-            //Caso 5: El dato que queremos busacar no existe
+            //Caso 5: No existe el dato en la lista
             Console.WriteLine($"- Dato[{data}] No Existe en la lista ");
         }
 

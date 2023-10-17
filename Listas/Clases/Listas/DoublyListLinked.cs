@@ -90,7 +90,7 @@ namespace All_List.Clases.Listas
                 CurrentNode = CurrentNode.Next;
             }
             //Caso 5: El dato a eliminar esta en X posicion de la lista
-            if (CurrentNode.Next.Data == data)
+            if (CurrentNode.Next != null && CurrentNode.Next.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 CurrentNode.Next.Next.Back = CurrentNode;
