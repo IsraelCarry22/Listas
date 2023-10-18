@@ -65,18 +65,12 @@ namespace All_List.Clases.Listas
             {
                 return;
             }
-            //Caso 2: El dato a eliminar esta al inicio de la lista y solo hay 1 elemento
-            if (Head.Data == data && LastNode.Data == data)
-            {
-                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
-                Clear();
-                return;
-            }
-            //Caso 3: El dato a eliminar esta al inicio de la lista
+            //Caso 2: El dato a eliminar esta al inicio de la lista
             if (Head.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 Head = Head.Next;
+                LastNode.Next = Head;
                 return;
             }
             //Caso 3: Preparamos una variable para recorrer la lista
@@ -85,14 +79,23 @@ namespace All_List.Clases.Listas
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 4: El dato a eliminar esta en X posicion/Final de la lista
+            //Caso 4: El dato a eliminar esta al Final de la lista
+            if (CurrentNode.Next == LastNode && CurrentNode.Next.Data == data)
+            {
+                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
+                CurrentNode.Next = CurrentNode.Next.Next;
+                LastNode = CurrentNode;
+                LastNode.Next = Head;
+                return;
+            }
+            //Caso 5: El dato a eliminar esta en X posicion de la lista
             if (CurrentNode.Next.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 CurrentNode.Next = CurrentNode.Next.Next;
                 return;
             }
-            //Caso 5: No se encontro el dato a eliminar
+            //Caso 6: No se encontro el dato a eliminar
             Console.WriteLine($"- Dato[{data}] no existe en la lista");
         }
 
