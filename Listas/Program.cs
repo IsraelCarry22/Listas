@@ -30,6 +30,7 @@ namespace Listas
                         RSList.Add(RL.Next(1, 10));
                         RSList.Add(RL.Next(1, 10));
                         RSList.Add(RL.Next(1, 10));
+                        RSList.Add(9);
                         RSList.Show();
                         Console.WriteLine();
                         RSList.Delete(RL.Next(1, 10));
@@ -37,6 +38,7 @@ namespace Listas
                         RSList.Delete(RL.Next(1, 10));
                         RSList.Delete(RL.Next(1, 10));
                         RSList.Delete(RL.Next(1, 10));
+                        RSList.Delete(9);
                         Console.WriteLine();
                         RSList.Show();
                         Console.WriteLine();
@@ -60,6 +62,7 @@ namespace Listas
                         RCSList.Add(RL.Next(1, 10));
                         RCSList.Add(RL.Next(1, 10));
                         RCSList.Add(RL.Next(1, 10));
+                        RCSList.Add(9);
                         RCSList.Show();
                         Console.WriteLine();
                         RCSList.Delete(RL.Next(1, 10));
@@ -67,6 +70,7 @@ namespace Listas
                         RCSList.Delete(RL.Next(1, 10));
                         RCSList.Delete(RL.Next(1, 10));
                         RCSList.Delete(RL.Next(1, 10));
+                        RCSList.Delete(9);
                         Console.WriteLine();
                         RCSList.Show();
                         Console.WriteLine();
@@ -92,6 +96,7 @@ namespace Listas
                         RDList.Add(RL.Next(1, 10));
                         RDList.Show();
                         Console.WriteLine();
+                        RDList.Delete(RL.Next(1, 10));
                         RDList.Delete(RL.Next(1, 10));
                         RDList.Delete(RL.Next(1, 10));
                         RDList.Delete(RL.Next(1, 10));
@@ -123,6 +128,8 @@ namespace Listas
                         RCDList.Add(RL.Next(1, 10));
                         RCDList.Add(RL.Next(1, 10));
                         RCDList.Show();
+                        RCDList.IsEmpty();
+                        RCDList.IsEmpty();
                         Console.WriteLine();
                         RCDList.Delete(RL.Next(1, 10));
                         RCDList.Delete(RL.Next(1, 10));
@@ -139,6 +146,7 @@ namespace Listas
                         RCDList.Search(RL.Next(1, 10));
                         RCDList.Search(RL.Next(1, 10));
                         RCDList.Search(RL.Next(1, 10));
+                        RCDList.IsEmpty();
                         Console.ReadKey();
                         break;
                     case 5:

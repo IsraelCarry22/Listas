@@ -72,14 +72,7 @@ namespace All_List.Clases.Listas
                 CurrentNode.Next = CurrentNode.Next.Next;
                 return;
             }
-            //Caso 5: El dato a eliminar esta al final de la lista
-            if (CurrentNode.Next == null && CurrentNode.Data == data)
-            {
-                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
-                CurrentNode.Next = null;
-                return;
-            }
-            //Caso 6: No se encontro el dato a eliminar
+            //Caso 5: No se encontro el dato a eliminar
             Console.WriteLine($"- Dato[{data}] no existe en la lista");
         }
 
@@ -114,7 +107,6 @@ namespace All_List.Clases.Listas
 
         public void Show()
         {
-            int i = 1;
             //Caso 1: Comprobamos si la lista esta vacia
             if (IsEmpty())
             {
@@ -122,6 +114,7 @@ namespace All_List.Clases.Listas
                 return;
             }
             //Caso 2: Recorremos la lista y la imprimimos en pantalla
+            int i = 0;
             Node CurrentNode = Head;
             Console.WriteLine("=== Mi lista simple ===");
             while (CurrentNode != null)

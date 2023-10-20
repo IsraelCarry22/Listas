@@ -34,9 +34,8 @@ namespace All_List.Clases.Listas
             if (NewNode.Data < Head.Data)
             {
                 NewNode.Next = Head;
-                LastNode = Head;
                 Head = NewNode;
-                Head.Next.Next = Head;
+                LastNode.Next = Head;
                 return;
             }
             //Caso 4: Recorremos la lista
@@ -138,7 +137,7 @@ namespace All_List.Clases.Listas
             }
             //Caso 2: Preparamos las variables pata empezar a recorrer
             Node CurrentNode = Head;
-            int i = 1;
+            int i = 0;
             Console.WriteLine("=== Mi lista Circular ===");
             //Caso 3: Recorremos la lista
             do

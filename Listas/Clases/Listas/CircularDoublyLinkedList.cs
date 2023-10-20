@@ -71,14 +71,14 @@ namespace All_List.Clases.Listas
             {
                 return;
             }
-            //Caso 2: El dato a eliminar esta al inicio de la lista
-            if (Head == LastNode && Head.Data == data)
+            //Caso 2: El dato a eliminar esta al inicio de la lista y solo hay un elmento
+            if (Head.Data == LastNode.Data)
             {
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 Clear();
                 return;
             }
-            //Caso 2: El dato a eliminar esta al inicio de la lista
+            //Caso 3: El dato a eliminar esta al inicio de la lista
             if (Head.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
@@ -87,7 +87,7 @@ namespace All_List.Clases.Listas
                 LastNode.Next = Head;
                 return;
             }
-            //Caso 3: El dato a eliminar esta al final de la lista
+            //Caso 4: El dato a eliminar esta al final de la lista
             if (LastNode.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
@@ -96,13 +96,13 @@ namespace All_List.Clases.Listas
                 Head.Back = LastNode;
                 return;
             }
-            //Caso 4: Empezamos a recorrer la lista
+            //Caso 5: Empezamos a recorrer la lista
             DoubleNode CurrentNode = Head;
             while (CurrentNode.Next != Head && CurrentNode.Next.Data < data)
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 5: El dato a eliminar esta en Xposicion de la lista
+            //Caso 6: El dato a eliminar esta en Xposicion de la lista
             if (CurrentNode.Next.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] se elimino de la lista");
@@ -110,7 +110,7 @@ namespace All_List.Clases.Listas
                 CurrentNode.Next = CurrentNode.Next.Next;
                 return;
             }
-            //Caso 6: No se encontro el dato a eliminar
+            //Caso 7: No se encontro el dato a eliminar
             Console.WriteLine($"- Dato[{data}] No existe en la lista");
         }
 
@@ -159,8 +159,8 @@ namespace All_List.Clases.Listas
             }
             //Caso 2: Preparamos las variables pata empezar a recorrer
             DoubleNode CurrentNode = Head;
-            int i = 1;
-            Console.WriteLine("=== Mi Lista doblemente enlazada ===");
+            int i = 0;
+            Console.WriteLine("=== Mi Lista circular doblemente enlazada ===");
             //Caso 3: Recorremos la lista
             do
             {
@@ -181,8 +181,8 @@ namespace All_List.Clases.Listas
             }
             //Caso 2: preparamos las variables para empezar a recorrer la lista
             DoubleNode CurrentNode = LastNode;
-            int i = 1;
-            Console.WriteLine("=== Mi Lista doblemente enlazada Reversa===");
+            int i = 0;
+            Console.WriteLine("=== Mi Lista circular doblemente enlazada Reversa ===");
             //Caso 3: recorremos la lista al revez
             do
             {
