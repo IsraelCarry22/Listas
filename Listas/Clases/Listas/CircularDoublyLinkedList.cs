@@ -15,9 +15,9 @@ namespace All_List.Clases.Listas
 
         public void Add(int data)
         {
-            //Caso 0: Creamos un nuevo nodo y le asignamos el dato que ingresamos
+            //Caso 0: Creamos un nuevo nodo
             DoubleNode NewNode = new DoubleNode(data);
-            //Caso 1: Insertamso al inicio y comprobamos si la lista esta vacia
+            //Caso 1: Insertamso al inicio
             if (IsEmpty())
             {
                 Head = NewNode;
@@ -26,12 +26,12 @@ namespace All_List.Clases.Listas
                 LastNode = Head;
                 return;
             }
-            //Caso 2: impedimos si al dato del nuevo nodo ya existe en la lista
+            //Caso 2: Impedimos datos repetidos
             if (Exist(NewNode.Data))
             {
                 return;
             }
-            //Caso 3: el dato del nuevo nodo es menor al dato de Head
+            //Caso 3: Insertamos al incio si el dato es menor
             if (NewNode.Data < Head.Data)
             {
                 NewNode.Next = Head;
@@ -42,7 +42,7 @@ namespace All_List.Clases.Listas
                 Head = NewNode;
                 return;
             }
-            //Caso 4: el dato del nuevo nodo es mayor al dato de LastNode
+            //Caso 4: Insertamos al final si el dato es mayor
             if (NewNode.Data > LastNode.Data)
             {
                 NewNode.Back = LastNode;
@@ -52,12 +52,13 @@ namespace All_List.Clases.Listas
                 Head.Back = LastNode;
                 return;
             }
-            // caso 5: El valor a ordenar en la lista no se sabe donde se colocara
+            // caso 5: Recorremos la lista
             DoubleNode CurrentNode = Head;
             while (CurrentNode.Next != Head && CurrentNode.Next.Data < NewNode.Data)
             {
                 CurrentNode = CurrentNode.Next;
             }
+            //Caso 6: Insertamso en X posicion
             NewNode.Next = CurrentNode.Next;
             NewNode.Back = CurrentNode;
             CurrentNode.Next.Back = NewNode;
@@ -66,68 +67,68 @@ namespace All_List.Clases.Listas
 
         public void Delete(int data)
         {
-            //Caso 1: Comprobamos si la lista esta vacia
+            //Caso 1: Si la lista esta vacia
             if (IsEmpty())
             {
                 return;
             }
-            //Caso 2: El dato a eliminar esta al inicio de la lista y solo hay un elmento
+            //Caso 2: Elimnamos y comprobamso si hay solo un elemento
             if (Head.Data == LastNode.Data)
             {
-                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 Clear();
+                Console.WriteLine($"- Dato[{data}] Eliminado de la lista");
                 return;
             }
-            //Caso 3: El dato a eliminar esta al inicio de la lista
+            //Caso 3: El dato esta al inicio de la lista
             if (Head.Data == data)
             {
-                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 Head = Head.Next;
                 Head.Back = LastNode;
                 LastNode.Next = Head;
+                Console.WriteLine($"- Dato[{data}] Eliminado de la lista");
                 return;
             }
-            //Caso 4: El dato a eliminar esta al final de la lista
+            //Caso 4: El dato esta al final de la lista
             if (LastNode.Data == data)
             {
-                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 LastNode = LastNode.Back;
                 LastNode.Next = Head;
                 Head.Back = LastNode;
+                Console.WriteLine($"- Dato[{data}] Eliminado de la lista");
                 return;
             }
-            //Caso 5: Empezamos a recorrer la lista
+            //Caso 5: Recorremos la lista
             DoubleNode CurrentNode = Head;
             while (CurrentNode.Next != Head && CurrentNode.Next.Data < data)
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 6: El dato a eliminar esta en Xposicion de la lista
+            //Caso 6: El dato esta en X posicion de la lista
             if (CurrentNode.Next.Data == data)
             {
-                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 CurrentNode.Next.Next.Back = CurrentNode;
                 CurrentNode.Next = CurrentNode.Next.Next;
+                Console.WriteLine($"- Dato[{data}] Eliminado de la lista");
                 return;
             }
             //Caso 7: No se encontro el dato a eliminar
-            Console.WriteLine($"- Dato[{data}] No existe en la lista");
+            Console.WriteLine($"- Dato[{data}] No encontrado/eliminado de la lista");
         }
 
         public void Search(int data)
         {
-            //Caso 1: Comprobamos si la lista esta vacia
+            //Caso 1: Si la lista esta vacia
             if (IsEmpty())
             {
                 return;
             }
-            //Caso 2: Comprobamos si es dato esta al inicio
+            //Caso 2: Si es dato esta al inicio
             if (Head.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] Existe en la lista");
                 return;
             }
-            //Caso 3: Comprobamos si es dato esta al final
+            //Caso 3: Si es dato esta al final
             if (LastNode.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] Existe en la lista");
@@ -151,72 +152,68 @@ namespace All_List.Clases.Listas
 
         public void Show()
         {
-            //Caso 1: Comprobamos si al lista esta vacia
+            //Caso 1: Si al lista esta vacia
             if (IsEmpty())
             {
                 Console.WriteLine("Lista vacia");
                 return;
             }
-            //Caso 2: Preparamos las variables pata empezar a recorrer
+            //Caso 2: Recorremos la lista
             DoubleNode CurrentNode = Head;
             int i = 0;
             Console.WriteLine("=== Mi Lista circular doblemente enlazada ===");
-            //Caso 3: Recorremos la lista
             do
             {
                 Console.WriteLine($"- Nodo[{i}] y dato: " + CurrentNode.Data);
                 CurrentNode = CurrentNode.Next;
                 i++;
             } while (CurrentNode != Head);
-            //Caso 4: Se han imprimido todos los elementos en pantalla
         }
 
         public void ShowRevers()
         {
-            //Caso 1: Comprobamos si la lsita esta vacia
+            //Caso 1: Si la lsita esta vacia
             if (IsEmpty())
             {
                 Console.WriteLine("Lista vacia");
                 return;
             }
-            //Caso 2: preparamos las variables para empezar a recorrer la lista
+            //Caso 2: Recorremos la lista
             DoubleNode CurrentNode = LastNode;
             int i = 0;
             Console.WriteLine("=== Mi Lista circular doblemente enlazada Reversa ===");
-            //Caso 3: recorremos la lista al revez
             do
             {
                 Console.WriteLine($"- Nodo[{i}] y dato: " + CurrentNode.Data);
                 CurrentNode = CurrentNode.Back;
                 i++;
             } while (CurrentNode != LastNode);
-            //Caso 4: Los datos de la lista se a imprimido al revez y se muestran en pantalla
         }
 
         public bool Exist(int data)
         {
-            //Caso 1: Comprobamos si la lista esta vacia
+            //Caso 1: Si la lista esta vacia
             if (IsEmpty())
             {
                 return false;
             }
-            //Caso 2: Comprobamos si el primer elemento ya tiene le mismo dato ingresado
+            //Caso 2: Si el primer elemento ya existe
             if (Head.Data == data)
             {
                 return true;
             }
-            //Caso 3: Comprobamos si es dato esta al final
+            //Caso 3: Si es dato esta al final
             if (LastNode.Data == data)
             {
                 return true;
             }
-            //Caso 4: Empezamos a recorrer la lista
+            //Caso 4: Recorremos la lista
             DoubleNode CurrentNode = Head;
             while (CurrentNode.Next != Head && CurrentNode.Next.Data <= data)
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 5: El dato ingresado existe en el ultimo elemento
+            //Caso 5: El dato ingresado existe en X posicion
             if (CurrentNode.Data == data)
             {
                 return true;

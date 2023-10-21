@@ -14,20 +14,20 @@ namespace All_List.Clases.Listas
 
         public void Add(int data)
         {
-            //Caso 0: Creamos un nuevo nodo y le asignamos el dato que ingresamos
+            //Caso 0: Creamos un nuevo nodo
             Node NewNode = new Node(data);
-            //Caso 1: Insertamso al inicio y comprobamos si la lista esta vacia
+            //Caso 1: Insertamso al inicio
             if (IsEmpty())
             {
                 Head = NewNode;
                 return;
             }
-            //Caso 2: impedimos si al dato del nuevo nodo ya existe en la lista
+            //Caso 2: Impedimos datos repetidos
             if (Exist(NewNode.Data))
             {
                 return;
             }
-            //Caso 3: el dato del nuevo nodo es menor al dato de Head
+            //Caso 3: Insertamos el dato al inicio de la lista
             if (NewNode.Data < Head.Data)
             {
                 NewNode.Next = Head;
@@ -40,80 +40,80 @@ namespace All_List.Clases.Listas
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 5: El valor ordeno se inserta en X posicion o al final de la lista
+            //Caso 5: Insertamos en X posicion o al final de la lista
             NewNode.Next = CurrentNode.Next;
             CurrentNode.Next = NewNode;
         }
 
         public void Delete(int data)
         {
-            //Caso 1: Comprobamos si la lista esta vacia
+            //Caso 1: Si la lista esta vacia
             if (IsEmpty())
             {
                 return;
             }
-            //Caso 2: El dato a eliminar esta al inicio de la lista
+            //Caso 2: Si el dato esta al inicio
             if (Head.Data == data)
             {
-                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 Head = Head.Next;
+                Console.WriteLine($"- Dato[{data}] Eliminado de la lista");
                 return;
             }
-            //Caso 3: Preparamos una variable para recorrer la lista
+            //Caso 3: Recorremos la lista
             Node CurrentNode = Head;
             while (CurrentNode.Next != null && CurrentNode.Next.Data < data)
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 4: El dato a eliminar esta en X posicion de la lista
+            //Caso 4: Si el dato esta en X posicion
             if (CurrentNode.Next != null && CurrentNode.Next.Data == data)
             {
-                Console.WriteLine($"- Dato[{data}] se elimino de la lista");
                 CurrentNode.Next = CurrentNode.Next.Next;
+                Console.WriteLine($"- Dato[{data}] Eliminado de la lista");
                 return;
             }
-            //Caso 5: No se encontro el dato a eliminar
-            Console.WriteLine($"- Dato[{data}] no existe en la lista");
+            //Caso 5: No se encontro el dato
+            Console.WriteLine($"- Dato[{data}] No encontrado/eliminado de la lista");
         }
 
         public void Search(int data)
         {
-            //Caso 1: Comprobamos si la lista esta vacia
+            //Caso 1: Si la lista esta vacia
             if (IsEmpty())
             {
                 return;
             }
-            //Case 2: Comprobamos si el dato esta al inicio de la lista
+            //Case 2: Si el dato esta al inicio
             if (Head.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] Existe en la lista");
                 return;
             }
-            //Caso 3: Empezamos a recorrer la lista
+            //Caso 3: Recorremos la lista
             Node CurrentNode = Head;
             while (CurrentNode.Next != null && CurrentNode.Next.Data <= data)
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 4: El dato ingresado existe X elemento
+            //Caso 4: Si el dato esta en X posicion
             if (CurrentNode.Data == data)
             {
                 Console.WriteLine($"- Dato[{data}] Existe en la lista");
                 return;
             }
-            //Caso 5: No existe el dato en la lista
+            //Caso 5: No existe el dato
             Console.WriteLine($"- Dato[{data}] No Existe en la lista ");
         }
 
         public void Show()
         {
-            //Caso 1: Comprobamos si la lista esta vacia
+            //Caso 1: Si la lista esta vacia
             if (IsEmpty())
             {
                 Console.WriteLine("Lista vacia");
                 return;
             }
-            //Caso 2: Recorremos la lista y la imprimimos en pantalla
+            //Caso 2: Recorremos la lista
             int i = 0;
             Node CurrentNode = Head;
             Console.WriteLine("=== Mi lista simple ===");
@@ -123,17 +123,16 @@ namespace All_List.Clases.Listas
                 CurrentNode = CurrentNode.Next;
                 i++;
             }
-            //Caso 3: Se han imprimido todos los elemetos en pantalla
         }
 
         public bool Exist(int data)
         {
-            //Caso 1: Comprobamos si la lista esta vacia
+            //Caso 1: Si la lista esta vacia
             if (IsEmpty())
             {
                 return false;
             }
-            //Caso 2: Comprobamos si el primer elemento ya tiene le mismo dato ingresado
+            //Caso 2: Si el primer nodo contiene el dato
             if (Head.Data == data)
             {
                 return true;
@@ -144,7 +143,7 @@ namespace All_List.Clases.Listas
             {
                 CurrentNode = CurrentNode.Next;
             }
-            //Caso 4: El dato ingresado existe en el ultimo elemento
+            //Caso 4: El dato existe en el ultimo elemento
             if (CurrentNode.Data == data)
             {
                 return true;

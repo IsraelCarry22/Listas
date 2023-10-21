@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Auto.cs" />
     <Compile Include="Clases\DoubleNode.cs" />
     <Compile Include="Clases\Listas\CircularDoublyLinkedList.cs" />
     <Compile Include="Clases\Listas\CircularList.cs" />
